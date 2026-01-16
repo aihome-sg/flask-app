@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello, Flask in VS Code!"
+    return "Hello, Flask Flask in VS Code!"
 
 if __name__ == "__main__":
     app.run(debug=True)
