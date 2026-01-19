@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Real Estate</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>🏠 Flask Real Estate</h1>
+    <p>Find your dream property</p>
+</header>
+<div class="container">
+    <form method="get">
+        <input type="text" name="q" placeholder="Search location" value="{{ request.args.get('q','') }}">
+        <select name="type">
+            <option value="">All Types</option>
+            <option value="Condo">Condo</option>
+            <option value="Landed">Landed</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="grid">
+        {% for p in properties %}
+        <div class="card">
+            <img src="{{ p.image }}">
+            <div class="card-body">
+                <h3>{{ p.title }}</h3>
+                <p>{{ p.location }} • {{ p.type }}</p>
+                <p class="price">SGD {{ "{:,.0f}".format(p.price) }}</p>
+                <p>{{ p.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<footer>
+    Flask Real Estate Demo © 2026
+</footer>
+</body>
+</html>
+
+
+
+
