@@ -22,7 +22,7 @@
         <button type="submit">Search</button>
     </form>
 
-  <div class="grid">
+   <div class="grid">
     {% for p in properties %}
     <div class="card">
         <a href="{{ url_for('property_detail', id=p.id) }}">
@@ -35,11 +35,9 @@
         </a>
     </div>
     {% endfor %}
-
-
-    
 </div>
 
+</div>
 
 <footer>
     Singapore Real Estate Demo © 2026

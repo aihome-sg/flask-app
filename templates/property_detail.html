@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ property.title }} - Singapore Property</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>🇸🇬 Singapore Property Listings</h1>
+</header>
+
+<div class="container">
+    <div class="card" style="max-width: 800px; margin: auto;">
+        <img src="{{ property.image }}">
+        <div class="card-body">
+            <h2>{{ property.title }}</h2>
+            <p><strong>District:</strong> {{ property.district }}</p>
+            <p><strong>Type:</strong> {{ property.type }}</p>
+            <p class="price">SGD {{ "{:,.0f}".format(property.price) }}</p>
+            <p>{{ property.description }}</p>
+        </div>
+    </div>
+
+    <p style="text-align:center; margin-top:20px;">
+        <a href="{{ url_for('home') }}">← Back to Listings</a>
+    </p>
+</div>
+
+<footer>
+    Singapore Real Estate Demo © 2026
+</footer>
+</body>
+</html>
