@@ -1,4 +1,4 @@
-# Flask Real Estate Website (Structured)
+# Flask Real Estate Website – Singapore Listings
 
 # Folder structure:
 # flask_real_estate/
@@ -8,30 +8,41 @@
 # └── static/
 #     └── style.css
 
+# =====================
 # app.py
+# =====================
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-# Sample property data
+# Singapore property sample data
 PROPERTIES = [
     {
         "id": 1,
-        "title": "Modern 2-Bedroom Condo",
-        "price": 1200000,
-        "location": "Singapore",
-        "type": "Condo",
+        "title": "4-Room HDB at Bishan",
+        "price": 780000,
+        "district": "Bishan",
+        "type": "HDB",
         "image": "https://via.placeholder.com/400x250",
-        "description": "Near MRT, fully furnished, great view"
+        "description": "High floor, near MRT, renovated"
     },
     {
         "id": 2,
-        "title": "Landed House with Garden",
-        "price": 3500000,
-        "location": "Singapore",
+        "title": "2-Bedroom Condo at Bugis",
+        "price": 1450000,
+        "district": "Bugis",
+        "type": "Condo",
+        "image": "https://via.placeholder.com/400x250",
+        "description": "City fringe, pool & gym"
+    },
+    {
+        "id": 3,
+        "title": "Landed Terrace at Serangoon",
+        "price": 3200000,
+        "district": "Serangoon",
         "type": "Landed",
         "image": "https://via.placeholder.com/400x250",
-        "description": "Quiet neighborhood, large space"
+        "description": "Quiet estate, 2-storey"
     }
 ]
 
@@ -41,12 +52,17 @@ def home():
     t = request.args.get("type", "")
 
     filtered = [p for p in PROPERTIES
-                if (q in p["location"].lower() or not q)
+                if (q in p["district"].lower() or not q)
                 and (p["type"] == t or not t)]
 
     return render_template("home.html", properties=filtered, request=request)
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+
+
 
 
